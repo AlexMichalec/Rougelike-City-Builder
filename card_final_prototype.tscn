@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://rm4dh56237ix"]
+
+[ext_resource type="Script" uid="uid://niyvn2f0musj" path="res://card_ptoto.gd" id="1_5ipkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmkje"]
+bg_color = Color(0.6086735, 0.7020964, 0.99084944, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.28235295)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4av3"]
+bg_color = Color(0.3869374, 0.5080963, 0.9786518, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.28235295)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpqi1"]
+bg_color = Color(0.5213172, 0.6303646, 0.99008864, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.28235295)
+
+[node name="Card" type="Button" unique_id=1481027828]
+custom_minimum_size = Vector2(150, 200)
+offset_left = -75.0
+offset_top = -350.0
+offset_right = 75.0
+offset_bottom = -150.0
+theme_override_colors/font_color = Color(0.04437256, 0.0043834327, 0.017654432, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmkje")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4av3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rpqi1")
+text = "Card 1"
+script = ExtResource("1_5ipkn")
+goal_scale = 1.35
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

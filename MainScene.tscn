@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://ccprct03r4tsy"]
+
+[ext_resource type="PackedScene" uid="uid://bpt4fqxf7m3a2" path="res://card_prototype.tscn" id="1_3mqji"]
+[ext_resource type="Script" uid="uid://1tqlbapo8s33" path="res://main_scene.gd" id="1_uxrcv"]
+[ext_resource type="PackedScene" uid="uid://bf75xrvienlnq" path="res://hex.tscn" id="2_rf2cd"]
+[ext_resource type="PackedScene" uid="uid://wpudth3usb2b" path="res://resources_stack.tscn" id="2_x4av3"]
+[ext_resource type="Script" uid="uid://bqyo28j6fy18a" path="res://right_hand.gd" id="3_rpqi1"]
+[ext_resource type="PackedScene" uid="uid://bmymai8ssh1ci" path="res://card.tscn" id="5_a814b"]
+[ext_resource type="FontFile" uid="uid://chhkcl6dy85o3" path="res://Conthrax-SemiBold.otf" id="7_5crlr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf7ih"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rmkje"]
+font_color = Color(0.22382358, 0.22382358, 0.22382355, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hf7ih"]
+font = ExtResource("7_5crlr")
+font_color = Color(0.17785347, 0.17785347, 0.17785347, 1)
+
+[node name="MainScene" type="Node2D" unique_id=1284010643]
+script = ExtResource("1_uxrcv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1352264681]
+custom_minimum_size = Vector2(3000, 3000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8209586, 0.7558638, 0.56278616, 1)
+
+[node name="HexMap" parent="." unique_id=434623441 instance=ExtResource("2_rf2cd")]
+offset_left = 4.0
+offset_top = -30.000004
+offset_right = 4.0
+offset_bottom = -30.000004
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=711304587]
+layer = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer3" unique_id=369721303]
+layer = 8
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer3/CanvasLayer" unique_id=2603777]
+visible = false
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -282.0
+offset_right = 197.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+columns = 3
+
+[node name="CardPrototype" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=1159712051 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype2" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=316868495 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype3" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=1620981610 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype4" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=1173647657 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype5" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=350474834 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype6" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=1907514878 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype7" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=1294908418 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype8" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=294456059 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="CardPrototype9" parent="CanvasLayer3/CanvasLayer/GridContainer" unique_id=1302716318 instance=ExtResource("1_3mqji")]
+layout_mode = 2
+
+[node name="RightHand" type="Control" parent="CanvasLayer3/CanvasLayer" unique_id=1101612319]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1126.0
+offset_top = 693.0
+offset_right = 1166.0
+offset_bottom = 733.0
+script = ExtResource("3_rpqi1")
+
+[node name="CardsWheel" type="Control" parent="CanvasLayer3/CanvasLayer/RightHand" unique_id=2095363439]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 166.0
+offset_right = -20.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" parent="CanvasLayer3/CanvasLayer/RightHand/CardsWheel" unique_id=1560508560 instance=ExtResource("5_a814b")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 150.0
+offset_bottom = 200.0
+text = ""
+
+[node name="Right" type="Button" parent="CanvasLayer3/CanvasLayer/RightHand" unique_id=189975876]
+unique_name_in_owner = true
+z_index = 100
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 43.0
+offset_top = 13.0
+offset_right = 83.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+text = "->"
+
+[node name="Left" type="Button" parent="CanvasLayer3/CanvasLayer/RightHand" unique_id=1167066677]
+unique_name_in_owner = true
+z_index = 100
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = -81.0
+offset_top = 13.0
+offset_right = -41.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+text = "<-"
+
+[node name="Undo" type="Button" parent="CanvasLayer3/CanvasLayer/RightHand" unique_id=1498942425]
+unique_name_in_owner = true
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = -34.0
+offset_top = 14.0
+offset_right = 39.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 25
+text = "Undo"
+
+[node name="LeftHand" type="Control" parent="CanvasLayer3" unique_id=388515932]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 586.0
+offset_right = 95.0
+offset_bottom = 626.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer3/LeftHand" unique_id=1978965831]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="GoldButton" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=1368575236]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+text = "Add Gold"
+
+[node name="BuildButton" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=27049744]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+text = "Build"
+
+[node name="GetResources" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=208975644]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+text = "Get Resources"
+autowrap_mode = 2
+
+[node name="DrawCard" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=1181163659]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+text = "Draw a Card"
+
+[node name="Stacks" type="Node2D" parent="CanvasLayer3" unique_id=2140653703]
+visible = false
+
+[node name="Stack" parent="CanvasLayer3/Stacks" unique_id=2057429678 instance=ExtResource("2_x4av3")]
+position = Vector2(76, 418)
+scale = Vector2(0.5, 0.5)
+resourceColor = Color(0.9324167, 0.76069283, 0.037046432, 1)
+is_round = true
+
+[node name="Stack4" parent="CanvasLayer3/Stacks" unique_id=556190937 instance=ExtResource("2_x4av3")]
+position = Vector2(177, 416)
+scale = Vector2(0.5, 0.5)
+resourceColor = Color(0.99999994, 0.10985748, 0.3465161, 1)
+
+[node name="Stack2" parent="CanvasLayer3/Stacks" unique_id=648775570 instance=ExtResource("2_x4av3")]
+position = Vector2(1200, 437)
+scale = Vector2(0.5, 0.5)
+resourceColor = Color(0.84195626, 0.0019899178, 0.99880093, 1)
+
+[node name="Stack3" parent="CanvasLayer3/Stacks" unique_id=1135368270 instance=ExtResource("2_x4av3")]
+position = Vector2(1305, 436)
+scale = Vector2(0.5, 0.5)
+resourceColor = Color(4.3317677e-06, 0.60479856, 0.7911492, 1)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="CanvasLayer3" unique_id=142781347]
+layer = 222
+visible = false
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="FadePanel" type="Panel" parent="CanvasLayer3/CanvasLayer2" unique_id=1335659273]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hf7ih")
+
+[node name="Reset" type="Button" parent="CanvasLayer3" unique_id=1036927720]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -69.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 46.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+text = "RESET
+"
+
+[node name="ResourcesLabel" type="Label" parent="CanvasLayer3" unique_id=586945461]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 117.0
+text = "Resources: 
+Gold: 8
+Energy: 4
+Materials: 6"
+label_settings = SubResource("LabelSettings_rmkje")
+
+[node name="InfoLabel" type="Label" parent="CanvasLayer3" unique_id=365559947]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+custom_maximum_size = Vector2(800, 150)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 189.0
+grow_horizontal = 2
+text = "Lollipop croissant fruitcake pastry gummi bears liquorice pudding dessert. Wafer powder lemon drops dragée cookie chocolate bar sweet roll candy. Dragée sweet roll icing powder cake pudding. "
+label_settings = SubResource("LabelSettings_hf7ih")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="ModeLabel" type="Label" parent="CanvasLayer3" unique_id=30621338]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(800, 150)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -395.0
+offset_top = -30.0
+offset_right = 405.0
+offset_bottom = 120.0
+grow_horizontal = 2
+text = "MODE: BUILD"
+label_settings = SubResource("LabelSettings_hf7ih")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[connection signal="update_cards" from="." to="CanvasLayer3/CanvasLayer/RightHand" method="_on_main_scene_update_cards"]
+[connection signal="building_finished" from="HexMap" to="." method="_on_hex_map_building_finished"]
+[connection signal="building_started" from="HexMap" to="." method="_on_hex_map_building_started"]
+[connection signal="try_to_build" from="CanvasLayer3/CanvasLayer/RightHand/CardsWheel/Card" to="." method="try_to_build"]
+[connection signal="pressed" from="CanvasLayer3/CanvasLayer/RightHand/Right" to="CanvasLayer3/CanvasLayer/RightHand" method="_on_right_pressed"]
+[connection signal="pressed" from="CanvasLayer3/CanvasLayer/RightHand/Left" to="CanvasLayer3/CanvasLayer/RightHand" method="_on_left_pressed"]
+[connection signal="pressed" from="CanvasLayer3/CanvasLayer/RightHand/Undo" to="." method="undo_choose_project"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/GoldButton" to="CanvasLayer3/Stacks/Stack" method="_on_add_pressed"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/BuildButton" to="." method="_on_build_button_pressed"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/GetResources" to="CanvasLayer3/Stacks/Stack4" method="_on_add_pressed"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/GetResources" to="CanvasLayer3/Stacks/Stack2" method="_on_add_pressed"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/GetResources" to="CanvasLayer3/Stacks/Stack3" method="_on_add_pressed"]
+[connection signal="pressed" from="CanvasLayer3/Reset" to="." method="_on_reset_pressed"]

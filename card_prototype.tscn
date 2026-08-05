@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpt4fqxf7m3a2"]
+
+[ext_resource type="Script" uid="uid://byyy4j24ad40x" path="res://card_prototype.gd" id="1_yvupg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf7ih"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[node name="CardPrototype" type="Button" unique_id=1159712051]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_hf7ih")
+text = "Empty Slot"
+script = ExtResource("1_yvupg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

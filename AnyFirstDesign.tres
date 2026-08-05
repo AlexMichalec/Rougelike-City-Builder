@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://djsspmqgi2he"]
+
+[ext_resource type="Gradient" uid="uid://bmrhjths64ixl" path="res://new_gradient.tres" id="1_gnhxd"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mvblm"]
+gradient = ExtResource("1_gnhxd")
+fill_from = Vector2(1, 1)
+
+[resource]
+texture = SubResource("GradientTexture2D_mvblm")

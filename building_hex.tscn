@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bospah26m42xq"]
+
+[ext_resource type="Script" uid="uid://de2enxduxs6ru" path="res://building_hex.gd" id="1_iavsh"]
+[ext_resource type="Texture2D" uid="uid://cm6d1g28y1u85" path="res://PlaceHolders/BASE_HEX.png" id="2_soadc"]
+[ext_resource type="Texture2D" uid="uid://cy3jpuerspbpl" path="res://PlaceHolders/Building/Park.png" id="3_ctt6e"]
+[ext_resource type="SpriteFrames" uid="uid://c2nkxkvckvddg" path="res://HexBuildingsFrams.tres" id="3_soadc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmkje"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_soadc"]
+texture = ExtResource("2_soadc")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf7ih"]
+bg_color = Color(0.8158153, 0.8158155, 0.8158153, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve0g0"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.22, 0.22, 0.22, 0.73333335)
+
+[node name="BuildingHex" type="Node2D" unique_id=1334187993]
+script = ExtResource("1_iavsh")
+
+[node name="Button" type="Button" parent="." unique_id=683988264]
+self_modulate = Color(7.70092e-07, 0.78667706, 0.9196175, 0.7019608)
+offset_left = -70.0
+offset_top = -82.0
+offset_right = 65.0
+offset_bottom = 78.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rmkje")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_soadc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_soadc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hf7ih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button" unique_id=2093240149]
+position = Vector2(67, 30)
+sprite_frames = ExtResource("3_soadc")
+
+[node name="ActionsMini" type="HBoxContainer" parent="Button" unique_id=668001608]
+z_index = 90
+layout_mode = 0
+offset_left = 1.0
+offset_top = 111.0
+offset_right = 129.0
+offset_bottom = 151.0
+alignment = 1
+
+[node name="RedAction" type="ColorRect" parent="Button/ActionsMini" unique_id=664991125]
+modulate = Color(1, 1, 1, 0.6627451)
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+tooltip_text = "Red Action Description"
+mouse_filter = 1
+color = Color(0.78891283, 2.9600412e-06, 7.70092e-07, 1)
+
+[node name="BlueAction" type="ColorRect" parent="Button/ActionsMini" unique_id=1110757436]
+modulate = Color(1, 1, 1, 0.6627451)
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+tooltip_text = "Blue Action Description"
+mouse_filter = 1
+color = Color(0, 0.5279162, 0.9934811, 1)
+
+[node name="GreenAction" type="ColorRect" parent="Button/ActionsMini" unique_id=792300279]
+modulate = Color(1, 1, 1, 0.6627451)
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+tooltip_text = "Green Action Description"
+mouse_filter = 1
+color = Color(0.77917147, 0.12490068, 0.99999994, 1)
+
+[node name="Title" type="Label" parent="Button" unique_id=38848662]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ve0g0")
+text = "Park"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=944713468]
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=555741114]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.0
+offset_top = -231.0
+offset_right = 313.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoTitle" type="Label" parent="CanvasLayer" unique_id=1251990207]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -147.0
+offset_right = 41.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Testujemy"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1668799818]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ctt6e")
+
+[node name="Back" type="Button" parent="CanvasLayer" unique_id=646903691]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = 121.0
+offset_right = 23.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

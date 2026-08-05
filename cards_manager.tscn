@@ -1,0 +1,480 @@
+[gd_scene format=3 uid="uid://bveoc7uxuj0oh"]
+
+[ext_resource type="Script" uid="uid://ds7wd33ifugfe" path="res://cards_manager.gd" id="1_xnvq2"]
+[ext_resource type="PackedScene" uid="uid://bmymai8ssh1ci" path="res://card.tscn" id="2_x3xpu"]
+[ext_resource type="Script" uid="uid://cna6xfq15e8j7" path="res://card_editor.gd" id="3_kbn5m"]
+[ext_resource type="Texture2D" uid="uid://ba4fjc111w84t" path="res://PlaceHolders/Building/Windmill.png" id="3_yweia"]
+[ext_resource type="SpriteFrames" uid="uid://c2nkxkvckvddg" path="res://HexBuildingsFrams.tres" id="4_ehhl7"]
+[ext_resource type="Script" uid="uid://b7bc15qpfsrf0" path="res://choose_art.gd" id="6_iw3xm"]
+[ext_resource type="Texture2D" uid="uid://mh000l07l6mu" path="res://PlaceHolders/Building/Apartments.png" id="7_mfnfi"]
+[ext_resource type="Texture2D" uid="uid://c7qiveljjofqo" path="res://PlaceHolders/Building/Bank.png" id="8_grfc3"]
+[ext_resource type="Texture2D" uid="uid://dddhsdwspoyv3" path="res://PlaceHolders/Building/Bloki.png" id="9_6cgkp"]
+[ext_resource type="Texture2D" uid="uid://bph1ycgdcny6h" path="res://PlaceHolders/Building/Brut1.png" id="10_a4pep"]
+[ext_resource type="Texture2D" uid="uid://vyjivnd75e8u" path="res://PlaceHolders/Building/Brut2.png" id="11_m0r8q"]
+[ext_resource type="Texture2D" uid="uid://dfq8vp6cm8bdk" path="res://PlaceHolders/Building/BrutBridge.png" id="12_c6p5j"]
+[ext_resource type="Texture2D" uid="uid://d0w7mdeitek3h" path="res://PlaceHolders/Building/BrutHouse.png" id="13_fsma7"]
+[ext_resource type="Texture2D" uid="uid://b51ddijgdv7s1" path="res://PlaceHolders/Building/Castle.png" id="14_7x7bx"]
+[ext_resource type="Texture2D" uid="uid://dv6mcujvgbfun" path="res://PlaceHolders/Building/CastleWater.png" id="15_s302c"]
+[ext_resource type="Texture2D" uid="uid://bsbmwcpk174yy" path="res://PlaceHolders/Building/CastleWinter.png" id="16_axrtb"]
+[ext_resource type="Texture2D" uid="uid://jewpis3nmabt" path="res://PlaceHolders/Building/Church.png" id="17_ki2p0"]
+[ext_resource type="Texture2D" uid="uid://misv5r3f0eo6" path="res://PlaceHolders/Building/Cottage.png" id="18_67vot"]
+[ext_resource type="Texture2D" uid="uid://c30ihbhbn2beq" path="res://PlaceHolders/Building/Factory.png" id="19_nlvfj"]
+[ext_resource type="Texture2D" uid="uid://c4fjvbou1y0va" path="res://PlaceHolders/Building/Karczma.png" id="20_78rww"]
+[ext_resource type="Texture2D" uid="uid://bgkalqxpbgp61" path="res://PlaceHolders/Building/Latarnia.png" id="21_sjnla"]
+[ext_resource type="Texture2D" uid="uid://c2v8n6xjrv54w" path="res://PlaceHolders/Building/Mine.png" id="22_sp718"]
+[ext_resource type="Texture2D" uid="uid://cy3jpuerspbpl" path="res://PlaceHolders/Building/Park.png" id="23_6iqui"]
+[ext_resource type="Texture2D" uid="uid://dnx31pglpgvwc" path="res://PlaceHolders/Building/Stairs.png" id="24_tiqrx"]
+[ext_resource type="Texture2D" uid="uid://w6wxkcncqtgu" path="res://PlaceHolders/Building/TempleGreek.png" id="25_m38nq"]
+[ext_resource type="Texture2D" uid="uid://dguj302g87p4e" path="res://PlaceHolders/Building/TempleJapan.png" id="26_tdfjh"]
+[ext_resource type="Texture2D" uid="uid://cpo7ydlnbjqvd" path="res://PlaceHolders/Building/Wall.png" id="27_ismcd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmkje"]
+bg_color = Color(0.24265456, 0.6078969, 0.70793533, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf7ih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfnfi"]
+bg_color = Color(0.51236045, 0.84859055, 0.92707646, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grfc3"]
+bg_color = Color(0.23558763, 0.60016364, 0.8002121, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve0g0"]
+bg_color = Color(0.27811238, 0.6595662, 0.7410663, 1)
+
+[node name="CardsManager" type="Control" unique_id=1584357334]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xnvq2")
+card_scene = ExtResource("2_x3xpu")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2032859071]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmkje")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=154221760]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CardsList" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1523369304]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardsList" unique_id=1859928552]
+layout_mode = 2
+text = "City Builder"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/CardsList" unique_id=1904306586]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Cards Manager"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/CardsList" unique_id=373868741]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GRID" type="GridContainer" parent="PanelContainer/MarginContainer/CardsList/MarginContainer" unique_id=499950968]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 8
+columns = 8
+
+[node name="Create" type="Button" parent="PanelContainer/MarginContainer/CardsList/MarginContainer/GRID" unique_id=215041820]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 160
+text = "+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardsList" unique_id=1708184510]
+layout_mode = 2
+alignment = 1
+
+[node name="SAVE" type="Button" parent="PanelContainer/MarginContainer/CardsList/HBoxContainer" unique_id=1813596317]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SAVE"
+
+[node name="CardEditor" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=222016318]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("3_kbn5m")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor" unique_id=1046554928]
+layout_mode = 2
+text = "City Builder"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/CardEditor" unique_id=510710240]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Card Editor"
+horizontal_alignment = 1
+
+[node name="DataContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor" unique_id=1789649670]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 31
+
+[node name="Values" type="VBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer" unique_id=677247951]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=1628927905]
+layout_mode = 2
+
+[node name="CardTitleLabel" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer" unique_id=647089279]
+layout_mode = 2
+text = "Title:"
+
+[node name="TitleInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer" unique_id=1430108235]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=1359353555]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer2" unique_id=1457232517]
+layout_mode = 2
+text = "Category:"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer2" unique_id=541876480]
+layout_mode = 2
+selected = 0
+item_count = 6
+popup/item_0/text = "TRADE"
+popup/item_0/id = 0
+popup/item_1/text = "INDUSTRY"
+popup/item_1/id = 1
+popup/item_2/text = "HOUSING"
+popup/item_2/id = 2
+popup/item_3/text = "SOCIAL"
+popup/item_3/id = 3
+popup/item_4/text = "OTHER"
+popup/item_4/id = 4
+popup/item_5/id = 5
+
+[node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=387154193]
+layout_mode = 2
+text = "Cost: "
+
+[node name="CostsContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=166130539]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer" unique_id=1102424495]
+layout_mode = 2
+text = "Gold"
+
+[node name="GoldCost" type="SpinBox" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer" unique_id=894483600]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer" unique_id=1828272145]
+layout_mode = 2
+text = "Energy: "
+
+[node name="EnergyCost" type="SpinBox" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer" unique_id=350487411]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer" unique_id=1647662099]
+layout_mode = 2
+text = "Materials: "
+
+[node name="MaterialCost" type="SpinBox" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer" unique_id=684224059]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=738864481]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer4" unique_id=1534388940]
+layout_mode = 2
+text = "Red Action"
+
+[node name="RedActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer4" unique_id=1863038357]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=316904754]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer5" unique_id=1564015096]
+layout_mode = 2
+text = "Blue Action: "
+
+[node name="BlueActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer5" unique_id=1297050973]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=1472325822]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer6" unique_id=702986540]
+layout_mode = 2
+text = "Green Action: "
+
+[node name="GreenActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer6" unique_id=880931966]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=1993162038]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer7" unique_id=1836578193]
+layout_mode = 2
+text = "Any action: "
+
+[node name="AnyActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer7" unique_id=863631589]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=999930290]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer8" unique_id=1634481477]
+layout_mode = 2
+text = "On Build Action:"
+
+[node name="OnBuildInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer8" unique_id=2136102984]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Art" type="VBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer" unique_id=2107700239]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=485105475]
+layout_mode = 2
+text = "Card Art:"
+
+[node name="CardArt" type="TextureRect" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=1643843494]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_yweia")
+
+[node name="ChangeArt" type="Button" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=1680730635]
+layout_mode = 2
+text = "CHANGE"
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=861506132]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=1306832451]
+layout_mode = 2
+text = "Hex Art"
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=55494448]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art/ColorRect" unique_id=1522860053]
+position = Vector2(152, 105)
+sprite_frames = ExtResource("4_ehhl7")
+
+[node name="OptionButton2" type="OptionButton" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=2101210047]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Item 1"
+popup/item_0/id = 0
+popup/item_1/text = "Item 2"
+popup/item_1/id = 1
+popup/item_2/text = "Item 3"
+popup/item_2/id = 2
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Art" unique_id=653618336]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BigArt" type="VBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer" unique_id=1700206113]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/BigArt" unique_id=1710354756]
+layout_mode = 2
+text = "Big Hex Art:"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/BigArt" unique_id=1496550375]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+texture = ExtResource("3_yweia")
+expand_mode = 5
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/BigArt" unique_id=1700242538]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Item 1"
+popup/item_0/id = 0
+popup/item_1/text = "Item 2"
+popup/item_1/id = 1
+popup/item_2/text = "Item 3"
+popup/item_2/id = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/BigArt" unique_id=546163530]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/BigArt" unique_id=1323879307]
+layout_mode = 2
+text = "Preview:"
+
+[node name="PreviewCard" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/BigArt" unique_id=1560508560 instance=ExtResource("2_x3xpu")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(75, 100)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor" unique_id=1582577877]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Cancel" type="Button" parent="PanelContainer/MarginContainer/CardEditor/HBoxContainer2" unique_id=2040527684]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+
+[node name="SaveCard" type="Button" parent="PanelContainer/MarginContainer/CardEditor/HBoxContainer2" unique_id=553562309]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Save
+"
+
+[node name="ChooseArt" type="CanvasLayer" parent="." unique_id=1937537323]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("6_iw3xm")
+texture_array = Array[Texture2D]([ExtResource("7_mfnfi"), ExtResource("8_grfc3"), ExtResource("9_6cgkp"), ExtResource("10_a4pep"), ExtResource("11_m0r8q"), ExtResource("12_c6p5j"), ExtResource("13_fsma7"), ExtResource("14_7x7bx"), ExtResource("15_s302c"), ExtResource("16_axrtb"), ExtResource("17_ki2p0"), ExtResource("18_67vot"), ExtResource("19_nlvfj"), ExtResource("20_78rww"), ExtResource("21_sjnla"), ExtResource("22_sp718"), ExtResource("23_6iqui"), ExtResource("24_tiqrx"), ExtResource("25_m38nq"), ExtResource("26_tdfjh"), ExtResource("27_ismcd"), ExtResource("3_yweia")])
+
+[node name="PanelContainer" type="PanelContainer" parent="ChooseArt" unique_id=618324396]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hf7ih")
+
+[node name="MarginContainer" type="MarginContainer" parent="ChooseArt/PanelContainer" unique_id=770985702]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseArt/PanelContainer/MarginContainer" unique_id=1451152248]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer" unique_id=2013634643]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1613601066]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.20080861, 0.20080861, 0.20080861, 1)
+theme_override_font_sizes/font_size = 20
+text = "Click on the Art to choose it!"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=707645694]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ArtGrid" type="GridContainer" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=1066399744]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 17
+columns = 4
+
+[node name="SampleButton" type="Button" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/ArtGrid" unique_id=507289333]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 150)
+custom_maximum_size = Vector2(300, 150)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mfnfi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grfc3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ve0g0")
+
+[node name="MarginContainer" type="MarginContainer" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/ArtGrid/SampleButton" unique_id=1282236870]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ART" type="TextureRect" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/ArtGrid/SampleButton/MarginContainer" unique_id=448948793]
+layout_mode = 2
+texture = ExtResource("9_6cgkp")
+expand_mode = 3
+
+[node name="Cancel" type="Button" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1855272635]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CANCEL"
+
+[node name="VSlider" type="VSlider" parent="ChooseArt/PanelContainer/MarginContainer/HBoxContainer" unique_id=487852923]
+custom_minimum_size = Vector2(50, 500)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Scale"
+min_value = 0.1
+max_value = 3.0
+step = 0.01
+value = 1.0
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/MarginContainer/GRID/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/SAVE" to="." method="_on_save_pressed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer/TitleInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_title_input_text_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/GoldCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_gold_cost_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/EnergyCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_energy_cost_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/MaterialCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_material_cost_value_changed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer4/RedActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_red_action_input_text_changed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer5/BlueActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_blue_action_input_text_changed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer6/GreenActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_green_action_input_text_changed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer7/AnyActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_any_action_input_text_changed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer8/OnBuildInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_on_build_input_text_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Art/ChangeArt" to="PanelContainer/MarginContainer/CardEditor" method="_on_change_art_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CardEditor/HBoxContainer2/Cancel" to="PanelContainer/MarginContainer/CardEditor" method="_on_cancel_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CardEditor/HBoxContainer2/SaveCard" to="PanelContainer/MarginContainer/CardEditor" method="_on_save_card_pressed"]
+[connection signal="art_chosen" from="ChooseArt" to="PanelContainer/MarginContainer/CardEditor" method="_on_choose_art_art_chosen"]
+[connection signal="pressed" from="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Cancel" to="ChooseArt" method="_on_cancel_pressed"]
+[connection signal="value_changed" from="ChooseArt/PanelContainer/MarginContainer/HBoxContainer/VSlider" to="ChooseArt" method="_on_scale_slider_value_changed"]
