@@ -71,7 +71,7 @@ func try_to_build(card:Card) -> void:
 		hex_map.build_mode_on = true
 		var new_tween = get_tree().create_tween()
 		new_tween.tween_property(right_hand,"scale",Vector2(1,1),0.8)
-		Global.chosen_card["title"] = card.title
+		Global.chosen_card = card.card_info
 
 
 func _on_build_button_pressed() -> void:

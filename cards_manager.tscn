@@ -107,6 +107,12 @@ text = "+"
 layout_mode = 2
 alignment = 1
 
+[node name="CANCEL" type="Button" parent="PanelContainer/MarginContainer/CardsList/HBoxContainer" unique_id=912826161]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CANCEL"
+
 [node name="SAVE" type="Button" parent="PanelContainer/MarginContainer/CardsList/HBoxContainer" unique_id=1813596317]
 unique_name_in_owner = true
 layout_mode = 2
@@ -462,6 +468,7 @@ step = 0.01
 value = 1.0
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/MarginContainer/GRID/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/CANCEL" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/SAVE" to="." method="_on_save_pressed"]
 [connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer/TitleInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_title_input_text_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/GoldCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_gold_cost_value_changed"]

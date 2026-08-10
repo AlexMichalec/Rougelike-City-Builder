@@ -10,11 +10,19 @@ extends Control
 var cards_library:Array[CardInfo] = []
 var is_deleting = false
 
+var LIBRARY_PATH = "res://data/CardsLibrary.json"
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = true
-	gen_from_arts()
+
+	if load_from_file():
+		gen_from_file()
+	else:
+		print("NIE DZIAŁA :c")
+		gen_from_arts()
 	
 func gen_from_arts():
 	for art:Texture2D in choose_art.texture_array:
@@ -31,6 +39,17 @@ func gen_from_arts():
 		new_card.pressed.connect(open_editor.bind(new_card_info,new_card))
 		new_card.delete_card.connect(delete_card.bind(new_card, new_card_info))
 		cards_library.append(new_card_info)
+	create.move_to_front()
+	
+func gen_from_file():
+	for card_info:CardInfo in cards_library:
+		var new_card :Card = card_scene.instantiate()
+		new_card.visible = true
+		grid.add_child(new_card)
+		new_card.in_hand = false
+		new_card.gen_from_info(card_info, true)
+		new_card.pressed.connect(open_editor.bind(card_info,new_card))
+		new_card.delete_card.connect(delete_card.bind(new_card, card_info))
 	create.move_to_front()
 
 func gen_empty():
@@ -82,3 +101,35 @@ func delete_card(card_to_delete:Card, card_info:CardInfo):
 func _on_save_pressed() -> void:
 	for card in cards_library:
 		print(card.title)
+	save_to_file()
+		
+func save_to_file():
+	var lib_file = FileAccess.open(LIBRARY_PATH,FileAccess.WRITE)
+	var to_save = []
+	for card:CardInfo in cards_library:
+		to_save.append(card.to_dict())
+	var line = JSON.stringify(to_save)
+	lib_file.store_line(line)
+
+func load_from_file():
+	if !FileAccess.file_exists(LIBRARY_PATH):
+		return false
+	var library_file = FileAccess.open(LIBRARY_PATH,FileAccess.READ)
+	var saved_library = JSON.parse_string(library_file.get_line())
+	cards_library = []
+	for info in saved_library:
+		cards_library.append(CardInfo.from_dict(info))
+	return true
+
+
+func _on_cancel_pressed() -> void:
+	for card in grid.get_children():
+		if card != create:
+			card.queue_free()
+	
+		
+	if load_from_file():
+		gen_from_file()
+	else:
+		print("NIE DZIAŁA :c")
+		gen_from_arts()

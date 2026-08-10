@@ -2,12 +2,16 @@ extends Control
 @export var cards_amount = 12
 var seen_index = 0
 var is_rotating = false
+var cards_library:Array
+var cards_in_hand:Array
+const LIBRARY_PATH = "res://data/CardsLibrary.json"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	load_cards_lib()
+	cards_in_hand = []
 	for i in range(cards_amount):
-		var new_card = %Card.duplicate()
+		var new_card:Card = %Card.duplicate()
 		%CardsWheel.add_child(new_card)
 		
 		new_card.in_hand = i==0
@@ -16,7 +20,11 @@ func _ready() -> void:
 		new_card.text = "Card " + str(i)
 		new_card.rotation = 2 * PI * float(i) / cards_amount
 		new_card.global_position = %CardsWheel.global_position + Vector2(-75,-360).rotated(TAU * float(i) / cards_amount)
-		new_card.gen_random()
+		var card_info = cards_library.pick_random()
+		while(card_info in cards_in_hand):
+			card_info = cards_library.pick_random()
+		cards_in_hand.append(card_info)
+		new_card.gen_from_info(card_info)
 	%Card.queue_free()
 	await get_tree().create_timer(0.1).timeout
 	update_alpha()
@@ -98,3 +106,13 @@ func _on_right_pressed() -> void:
 
 func _on_main_scene_update_cards() -> void:
 	reset_cards()
+
+func load_cards_lib():
+	if !FileAccess.file_exists(LIBRARY_PATH):
+		return false
+	var library_file = FileAccess.open(LIBRARY_PATH,FileAccess.READ)
+	var saved_library = JSON.parse_string(library_file.get_line())
+	cards_library = []
+	for info in saved_library:
+		cards_library.append(CardInfo.from_dict(info))
+	return true

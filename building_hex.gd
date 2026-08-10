@@ -2,17 +2,22 @@ extends Node2D
 @onready var title_label: Label = %Title
 @onready var info_title: Label = %InfoTitle
 
+@onready var red_action: ColorRect = $Button/ActionsMini/RedAction
+@onready var blue_action: ColorRect = $Button/ActionsMini/BlueAction
+@onready var green_action: ColorRect = $Button/ActionsMini/GreenAction
+
+
 var title = "Placeholder"
-var card:Dictionary
+var card_info:CardInfo
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Button/AnimatedSprite2D.frame = 4
 	title_label.text = title
-	card = Global.chosen_card
-		
-	title = card["title"]
+	card_info = Global.chosen_card
+	title = card_info.title	
 	title_label.text = title
 	info_title.text = title
 	if title == "Park":
@@ -26,6 +31,12 @@ func _ready() -> void:
 	elif title == "Windmill":
 		$Button/AnimatedSprite2D.frame = 5
 			
+	red_action.visible = !card_info.red_action_text == ""
+	red_action.tooltip_text = card_info.red_action_text
+	blue_action.visible = !card_info.blue_action_text == ""
+	blue_action.tooltip_text = card_info.blue_action_text
+	green_action.visible = !card_info.green_action_text == ""
+	green_action.tooltip_text = card_info.green_action_text
 		
 	pass # Replace with function body.
 
