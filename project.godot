@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Global="*uid://djhwc08x1rhar"
 Texts="*uid://jvoiowi5l7pj"
+ActionManager="*uid://fb5ld350ygbg"
+ResourceManager="*uid://kc84fhoxph5e"
 
 [display]
 

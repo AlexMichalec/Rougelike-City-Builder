@@ -71,6 +71,8 @@ func gen_from_info(new_card_info:CardInfo, in_list = false):
 		%Art.texture = load(card_info.art_card)
 	else:
 		%Art.texture = load("res://icon.svg")
+	update_actions()
+	"""
 	var single_action_added = false
 	for i in range(3):
 		var action = [%RedAction, %BlueAction, %GreenAction][i]
@@ -86,6 +88,7 @@ func gen_from_info(new_card_info:CardInfo, in_list = false):
 	%AnyAction.text = card_info.any_action_text
 	%OnBuild.visible = card_info.on_build_action_text!=""
 	%OnBuildAction.text = card_info.on_build_action_text
+	"""
 	delete_button.visible = in_list
 	delete_button.modulate = Color.TRANSPARENT
 		
@@ -116,3 +119,26 @@ func undo_chosen():
 
 func _on_delete_button_pressed() -> void:
 	delete_card.emit()
+	
+func update_actions():
+	var actions_containers = {"Red":%RedAction , "Blue": %BlueAction, "Green": %GreenAction, "Any": %Any, "OnBuild": %OnBuild}
+	var actions_labels = {"Red":%RLabel , "Blue": %BLabel, "Green": %GLabel, "Any": %AnyAction, "OnBuild": %OnBuildLabel}
+	%Actions.visible = false
+	for container in actions_containers.values():
+		container.visible = false
+	for label in actions_labels.values():
+		label.text = ""
+	for color_name:String in card_info.actions.keys():
+		if color_name in ["Red","Blue","Green"]:
+			%Actions.visible = true
+		var color_array = card_info.actions[color_name]
+		for action:Dictionary in color_array:
+			actions_containers[color_name].visible = true
+			actions_labels[color_name].text += ActionManager.get_text(action) +"\n"
+		actions_labels[color_name].text = actions_labels[color_name].text.trim_suffix("\n")
+		
+			
+
+
+			
+			

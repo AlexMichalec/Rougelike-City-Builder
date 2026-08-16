@@ -75,6 +75,7 @@ func _input(event: InputEvent) -> void:
 			return
 		var new_building_tile = Vector2i(randi_range(7,10),randi_range(0,4))
 		building_started.emit()
+		Global.chosen_coords = coordinates
 		await  get_tree().create_timer(0.75).timeout
 		
 		tile_map_layer.set_cell(coordinates,1,Vector2i(0,0))
@@ -85,6 +86,8 @@ func _input(event: InputEvent) -> void:
 		mouse_moved = true
 		build_mode_on = false
 		building_finished.emit()
+		
+
 		
 		
 		

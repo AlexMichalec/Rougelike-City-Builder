@@ -14,7 +14,7 @@ var build_mode = 0 #0 - nie budujesz, 1 - wybierz kartę, 2 - wybierz hexa, 3 bu
 @onready var mode_label: Label = %ModeLabel
 @onready var right_hand: Control = %RightHand
 
-
+@export var ActionColors = {"Red":Color.RED, "Blue":Color.BLUE, "Green": Color.BLUE_VIOLET, "Any": Color.WHITE}
 
 var chosen_card:Card
 
@@ -104,6 +104,8 @@ func _on_hex_map_building_started() -> void:
 	var new_tween = get_tree().create_tween()
 	var goal_position = chosen_card.global_position
 	goal_position.y = -400
+	gold -= chosen_card.cost[0]
+	materials -= chosen_card.cost[2]
 	energy -= chosen_card.cost[1]
 	update_resource_label()
 	new_tween.tween_property(chosen_card,"global_position",goal_position,0.75)
@@ -112,9 +114,9 @@ func _on_hex_map_building_started() -> void:
 
 func _on_hex_map_building_finished() -> void:
 	InfoLabel.text = ""
-	gold -= chosen_card.cost[0]
-	materials -= chosen_card.cost[2]
-	update_resource_label()
+	#gold -= chosen_card.cost[0]
+	#materials -= chosen_card.cost[2]
+	#update_resource_label()
 	build_mode = 0
 	RightArrow.visible = true
 	LeftArrow.visible = true
@@ -124,3 +126,37 @@ func _on_hex_map_building_finished() -> void:
 	#chosen_card.queue_free()
 	
 	
+
+
+func _on_play_red_pressed() -> void:
+	play_color("Red")
+
+
+func _on_play_green_pressed() -> void:
+	play_color("Green")
+
+
+func _on_play_blue_pressed() -> void:
+	play_color("Blue")
+
+func play_color(color_name:String):
+	for building_record in Global.buildings_list:
+		var building:BuildingHex = building_record[1]
+		if building.card_info.actions.has(color_name):
+			ActionManager.use(building.card_info.actions[color_name])
+			building.get_attention(ActionColors[color_name])
+			await get_tree().create_timer(1).timeout
+			building.lose_attention()
+		elif building.card_info.actions.has("Any"):
+			ActionManager.use(building.card_info.actions["Any"])
+			building.get_attention(ActionColors["Any"])
+			await get_tree().create_timer(1).timeout
+			building.lose_attention()
+		else:
+			continue
+			building.get_attention(ActionColors["Omit"])
+			await get_tree().create_timer(0.2).timeout
+			building.lose_attention()
+			
+			
+			

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bmymai8ssh1ci" path="res://card.tscn" id="2_x3xpu"]
 [ext_resource type="Script" uid="uid://cna6xfq15e8j7" path="res://card_editor.gd" id="3_kbn5m"]
 [ext_resource type="Texture2D" uid="uid://ba4fjc111w84t" path="res://PlaceHolders/Building/Windmill.png" id="3_yweia"]
+[ext_resource type="PackedScene" uid="uid://dmwwc80fry0u" path="res://action_container.tscn" id="4_6cgkp"]
 [ext_resource type="SpriteFrames" uid="uid://c2nkxkvckvddg" path="res://HexBuildingsFrams.tres" id="4_ehhl7"]
 [ext_resource type="Script" uid="uid://b7bc15qpfsrf0" path="res://choose_art.gd" id="6_iw3xm"]
 [ext_resource type="Texture2D" uid="uid://mh000l07l6mu" path="res://PlaceHolders/Building/Apartments.png" id="7_mfnfi"]
@@ -27,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://w6wxkcncqtgu" path="res://PlaceHolders/Building/TempleGreek.png" id="25_m38nq"]
 [ext_resource type="Texture2D" uid="uid://dguj302g87p4e" path="res://PlaceHolders/Building/TempleJapan.png" id="26_tdfjh"]
 [ext_resource type="Texture2D" uid="uid://cpo7ydlnbjqvd" path="res://PlaceHolders/Building/Wall.png" id="27_ismcd"]
+[ext_resource type="FontFile" uid="uid://chhkcl6dy85o3" path="res://Conthrax-SemiBold.otf" id="29_a4pep"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmkje"]
 bg_color = Color(0.24265456, 0.6078969, 0.70793533, 1)
@@ -41,6 +43,17 @@ bg_color = Color(0.23558763, 0.60016364, 0.8002121, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve0g0"]
 bg_color = Color(0.27811238, 0.6595662, 0.7410663, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jp6j"]
+bg_color = Color(4.235506e-06, 0.6572613, 0.8586515, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxmio"]
+bg_color = Color(0.7428968, 0.84216785, 0.88539094, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5g8yj"]
+font = ExtResource("29_a4pep")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="CardsManager" type="Control" unique_id=1584357334]
 layout_mode = 3
@@ -121,9 +134,9 @@ text = "SAVE"
 
 [node name="CardEditor" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=222016318]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 script = ExtResource("3_kbn5m")
+action_container_scene = ExtResource("4_6cgkp")
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor" unique_id=1046554928]
 layout_mode = 2
@@ -213,65 +226,13 @@ text = "Materials: "
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=738864481]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=1161592024]
 layout_mode = 2
+text = "Actions:"
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer4" unique_id=1534388940]
-layout_mode = 2
-text = "Red Action"
-
-[node name="RedActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer4" unique_id=1863038357]
+[node name="ActionsList" type="VBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=2078339803]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=316904754]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer5" unique_id=1564015096]
-layout_mode = 2
-text = "Blue Action: "
-
-[node name="BlueActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer5" unique_id=1297050973]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=1472325822]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer6" unique_id=702986540]
-layout_mode = 2
-text = "Green Action: "
-
-[node name="GreenActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer6" unique_id=880931966]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=1993162038]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer7" unique_id=1836578193]
-layout_mode = 2
-text = "Any action: "
-
-[node name="AnyActionInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer7" unique_id=863631589]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values" unique_id=999930290]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer8" unique_id=1634481477]
-layout_mode = 2
-text = "On Build Action:"
-
-[node name="OnBuildInput" type="LineEdit" parent="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer8" unique_id=2136102984]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Art" type="VBoxContainer" parent="PanelContainer/MarginContainer/CardEditor/DataContainer" unique_id=2107700239]
 layout_mode = 2
@@ -467,6 +428,61 @@ max_value = 3.0
 step = 0.01
 value = 1.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=589352743]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1630409783]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jp6j")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/PanelContainer" unique_id=957383909]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_oxmio")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/PanelContainer2" unique_id=1420357200]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/PanelContainer2/MarginContainer" unique_id=1114997655]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=143470054]
+layout_mode = 2
+text = "Action Manager"
+label_settings = SubResource("LabelSettings_5g8yj")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=817082059]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1944526974]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CancelAction" type="Button" parent="CanvasLayer/PanelContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1439158901]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Cancel"
+
+[node name="SaveAction" type="Button" parent="CanvasLayer/PanelContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1300610720]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Save"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/MarginContainer/GRID/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/CANCEL" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/SAVE" to="." method="_on_save_pressed"]
@@ -474,11 +490,6 @@ value = 1.0
 [connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/GoldCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_gold_cost_value_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/EnergyCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_energy_cost_value_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/MaterialCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_material_cost_value_changed"]
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer4/RedActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_red_action_input_text_changed"]
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer5/BlueActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_blue_action_input_text_changed"]
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer6/GreenActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_green_action_input_text_changed"]
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer7/AnyActionInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_any_action_input_text_changed"]
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer8/OnBuildInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_on_build_input_text_changed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Art/ChangeArt" to="PanelContainer/MarginContainer/CardEditor" method="_on_change_art_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardEditor/HBoxContainer2/Cancel" to="PanelContainer/MarginContainer/CardEditor" method="_on_cancel_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardEditor/HBoxContainer2/SaveCard" to="PanelContainer/MarginContainer/CardEditor" method="_on_save_card_pressed"]

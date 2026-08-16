@@ -8,6 +8,33 @@
 [ext_resource type="PackedScene" uid="uid://bmymai8ssh1ci" path="res://card.tscn" id="5_a814b"]
 [ext_resource type="FontFile" uid="uid://chhkcl6dy85o3" path="res://Conthrax-SemiBold.otf" id="7_5crlr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5crlr"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbc2u"]
+bg_color = Color(0.8662157, 1.0348111e-06, 9.62615e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_torvr"]
+bg_color = Color(0.7397895, 2.0094587e-06, 5.7756904e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xkvn"]
+bg_color = Color(0.5765234, 0.003402844, 0.9047355, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5x2j"]
+bg_color = Color(0.657301, 0.19908273, 0.99990374, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvb8b"]
+bg_color = Color(0.657301, 0.19908273, 0.99990374, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hf6u"]
+bg_color = Color(0.19650772, 0.30294728, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mcbk"]
+bg_color = Color(0.40568545, 0.5500103, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mctxq"]
+bg_color = Color(0.2615088, 0.40245908, 1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf7ih"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rmkje"]
@@ -19,6 +46,13 @@ font_color = Color(0.17785347, 0.17785347, 0.17785347, 1)
 
 [node name="MainScene" type="Node2D" unique_id=1284010643]
 script = ExtResource("1_uxrcv")
+ActionColors = {
+"Any": Color(1, 1, 1, 1),
+"Blue": Color(0, 0, 1, 1),
+"Green": Color(0.5411765, 0.16862746, 0.8862745, 1),
+"Omit": Color(0, 0, 0, 0.84705883),
+"Red": Color(1, 0, 0, 1)
+}
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1352264681]
 custom_minimum_size = Vector2(3000, 3000)
@@ -187,10 +221,29 @@ layout_mode = 2
 text = "Get Resources"
 autowrap_mode = 2
 
-[node name="DrawCard" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=1181163659]
+[node name="PlayRed" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=1181163659]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
-text = "Draw a Card"
+theme_override_styles/normal = SubResource("StyleBoxFlat_5crlr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hbc2u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_torvr")
+text = "Play!"
+
+[node name="PlayGreen" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=5298742]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xkvn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p5x2j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yvb8b")
+text = "Play!"
+
+[node name="PlayBlue" type="Button" parent="CanvasLayer3/LeftHand/HBoxContainer" unique_id=728040119]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_3hf6u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4mcbk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mctxq")
+text = "Play!"
 
 [node name="Stacks" type="Node2D" parent="CanvasLayer3" unique_id=2140653703]
 visible = false
@@ -308,4 +361,7 @@ text_overrun_behavior = 2
 [connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/GetResources" to="CanvasLayer3/Stacks/Stack4" method="_on_add_pressed"]
 [connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/GetResources" to="CanvasLayer3/Stacks/Stack2" method="_on_add_pressed"]
 [connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/GetResources" to="CanvasLayer3/Stacks/Stack3" method="_on_add_pressed"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/PlayRed" to="." method="_on_play_red_pressed"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/PlayGreen" to="." method="_on_play_green_pressed"]
+[connection signal="pressed" from="CanvasLayer3/LeftHand/HBoxContainer/PlayBlue" to="." method="_on_play_blue_pressed"]
 [connection signal="pressed" from="CanvasLayer3/Reset" to="." method="_on_reset_pressed"]

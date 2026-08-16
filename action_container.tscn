@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://dmwwc80fry0u"]
+
+[ext_resource type="Script" uid="uid://cuc6gkp3s1utc" path="res://action_container.gd" id="1_b45l5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cgkp"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b45l5"]
+bg_color = Color(0.7779578, 3.008172e-06, 4.813075e-07, 1)
+
+[node name="ActionContainer" type="HBoxContainer" unique_id=4654326]
+script = ExtResource("1_b45l5")
+
+[node name="AddAction" type="Button" parent="." unique_id=300627230]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+
+[node name="ColorButton" type="OptionButton" parent="." unique_id=336912486]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "Red"
+popup/item_0/id = 0
+popup/item_1/text = "Green"
+popup/item_1/id = 1
+popup/item_2/text = "Blue"
+popup/item_2/id = 2
+popup/item_3/text = "Any"
+popup/item_3/id = 3
+popup/item_4/text = "OnBuild"
+popup/item_4/id = 4
+
+[node name="TypeButton" type="OptionButton" parent="." unique_id=1720363622]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Add"
+popup/item_0/id = 0
+popup/item_1/text = "Reduce"
+popup/item_1/id = 1
+popup/item_2/text = "Draw"
+popup/item_2/id = 2
+
+[node name="Amount" type="SpinBox" parent="." unique_id=2086047404]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+
+[node name="Resource" type="OptionButton" parent="." unique_id=1564214296]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Gold"
+popup/item_0/id = 0
+popup/item_1/text = "Energy"
+popup/item_1/id = 1
+popup/item_2/text = "Materials"
+popup/item_2/id = 2
+
+[node name="Condition" type="OptionButton" parent="." unique_id=2035840854]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "."
+popup/item_0/id = 0
+popup/item_1/text = "For each"
+popup/item_1/id = 1
+popup/item_2/text = "If"
+popup/item_2/id = 2
+
+[node name="RemoveAction" type="Button" parent="." unique_id=631699162]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_6cgkp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6cgkp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b45l5")
+text = "-"
+
+[connection signal="pressed" from="AddAction" to="." method="_on_add_action_pressed"]
+[connection signal="item_selected" from="ColorButton" to="." method="_on_color_button_item_selected"]
+[connection signal="item_selected" from="TypeButton" to="." method="_on_type_button_item_selected"]
+[connection signal="value_changed" from="Amount" to="." method="_on_amount_value_changed"]
+[connection signal="item_selected" from="Resource" to="." method="_on_resource_item_selected"]
+[connection signal="pressed" from="RemoveAction" to="." method="_on_remove_action_pressed"]

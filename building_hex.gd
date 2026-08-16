@@ -1,10 +1,13 @@
+class_name BuildingHex
 extends Node2D
 @onready var title_label: Label = %Title
 @onready var info_title: Label = %InfoTitle
+@onready var red_action: ColorRect = %RedAction
+@onready var green_action: ColorRect = %GreenAction
+@onready var blue_action: ColorRect = %BlueAction
+@onready var any_action: ColorRect = %AnyAction
 
-@onready var red_action: ColorRect = $Button/ActionsMini/RedAction
-@onready var blue_action: ColorRect = $Button/ActionsMini/BlueAction
-@onready var green_action: ColorRect = $Button/ActionsMini/GreenAction
+
 
 
 var title = "Placeholder"
@@ -31,14 +34,30 @@ func _ready() -> void:
 	elif title == "Windmill":
 		$Button/AnimatedSprite2D.frame = 5
 			
-	red_action.visible = !card_info.red_action_text == ""
-	red_action.tooltip_text = card_info.red_action_text
-	blue_action.visible = !card_info.blue_action_text == ""
-	blue_action.tooltip_text = card_info.blue_action_text
-	green_action.visible = !card_info.green_action_text == ""
-	green_action.tooltip_text = card_info.green_action_text
-		
+	red_action.visible = card_info.actions.has("Red")
+	red_action.tooltip_text = get_action_texts("Red")
+	blue_action.visible = card_info.actions.has("Blue")
+	blue_action.tooltip_text = get_action_texts("Blue")
+	green_action.visible = card_info.actions.has("Green")
+	green_action.tooltip_text = get_action_texts("Green")
+	any_action.visible = card_info.actions.has("Any")
+	any_action.tooltip_text = get_action_texts("Any")
+	
+	Global.buildings_list.append([Global.chosen_coords,self])
+	Global.buildings_list.sort_custom(hex_sort)
+	print(Global.buildings_list)
+	
+	ActionManager.use(card_info.actions.get("OnBuild",[]))
 	pass # Replace with function body.
+	
+func hex_sort(a:Array, b:Array):
+	if a[0].y < b[0].y:
+		return true
+	elif a[0].y == b[0].y and a[0].x<b[0].x:
+		return true
+	else:
+		return false
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,9 +80,29 @@ func _on_button_mouse_entered() -> void:
 	z_index = 999
 	title_label.visible = true
 	modulate = Color.WHITE
-
+	
 
 func _on_button_mouse_exited() -> void:
 	z_index = 0
 	title_label.visible = false
 	#modulate = Color(0.859, 0.859, 0.859)
+	
+func get_action_texts(color:String):
+	var result = ""
+	for action:Dictionary in card_info.actions.get(color,[]):
+		if result != "":
+			result += "\n"
+		result += ActionManager.get_text(action)
+	return result
+	
+func get_attention(color:Color):
+	$Button.add_theme_stylebox_override("normal", $Button.get_theme_stylebox("hover"))
+	$Button.self_modulate = color
+	z_index = 999
+	title_label.visible = true
+
+func lose_attention():
+	$Button.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
+	$Button.self_modulate = Color(0.0, 0.788, 0.922, 0.702)
+	z_index = 0
+	title_label.visible = false
