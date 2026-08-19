@@ -27,3 +27,22 @@ func get_text(action:Dictionary):
 		else:
 			result += "..."
 	return result
+	
+func get_effect_text(action:Dictionary):
+	var result = ""
+	if !action.has("type"):
+		return result
+	if action["type"] == "Add":
+		var amount = int(action.get("amount",0))	
+		result = "+" + str(amount) + " " + action.get("resource","")
+	elif action["type"] == "Reduce":
+		var amount = int(action.get("amount",0))
+		result = "-" + str(amount) + " " + action.get("resource","")
+	elif action["type"] == "Draw":
+		result = "+ "
+		if action.has("amount"):
+			result += str(int(action["amount"])) + " Card"
+			result += ("" if action["amount"] == 1 else "s")
+		else:
+			result += "..."
+	return result

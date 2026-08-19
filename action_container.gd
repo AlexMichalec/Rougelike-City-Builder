@@ -77,6 +77,8 @@ func _on_remove_action_pressed() -> void:
 	condition.visible = false
 	remove_action.visible = false
 	edited_card.actions[prev_color].erase(action_dict)
+	if edited_card.actions[prev_color].size() == 0:
+		edited_card.actions.erase(prev_color)
 	remove_the_action.emit(self)
 	prev_color = ""
 	actions_changed.emit()

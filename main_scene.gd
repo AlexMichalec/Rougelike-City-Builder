@@ -144,19 +144,19 @@ func play_color(color_name:String):
 		var building:BuildingHex = building_record[1]
 		if building.card_info.actions.has(color_name):
 			ActionManager.use(building.card_info.actions[color_name])
-			building.get_attention(ActionColors[color_name])
+			building.get_attention(ActionColors[color_name],color_name)
 			await get_tree().create_timer(1).timeout
 			building.lose_attention()
+			await get_tree().create_timer(0.2).timeout
 		elif building.card_info.actions.has("Any"):
 			ActionManager.use(building.card_info.actions["Any"])
-			building.get_attention(ActionColors["Any"])
+			building.get_attention((ActionColors["Any"] + ActionColors[color_name])/2,"Any")
 			await get_tree().create_timer(1).timeout
 			building.lose_attention()
+			await get_tree().create_timer(0.2).timeout
 		else:
 			continue
-			building.get_attention(ActionColors["Omit"])
-			await get_tree().create_timer(0.2).timeout
-			building.lose_attention()
+
 			
 			
 			

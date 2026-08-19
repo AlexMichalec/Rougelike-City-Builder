@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cm6d1g28y1u85" path="res://PlaceHolders/BASE_HEX.png" id="2_soadc"]
 [ext_resource type="Texture2D" uid="uid://cy3jpuerspbpl" path="res://PlaceHolders/Building/Park.png" id="3_ctt6e"]
 [ext_resource type="SpriteFrames" uid="uid://c2nkxkvckvddg" path="res://HexBuildingsFrams.tres" id="3_soadc"]
+[ext_resource type="FontFile" uid="uid://chhkcl6dy85o3" path="res://Conthrax-SemiBold.otf" id="4_ctt6e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmkje"]
 
@@ -17,6 +18,43 @@ bg_color = Color(0.8158153, 0.8158155, 0.8158153, 1)
 content_margin_left = 4.0
 content_margin_right = 4.0
 bg_color = Color(0.22, 0.22, 0.22, 0.73333335)
+
+[sub_resource type="Curve" id="Curve_6o1y5"]
+_data = [Vector2(0, 0.87068963), 0.0, 0.0, 0, 0, Vector2(0.4876033, 1), 0.0, 0.0, 0, 0, Vector2(0.8512396, 0.93103445), 0.0, 0.0, 0, 0, Vector2(1, 0.034482718), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_soadc"]
+curve = SubResource("Curve_6o1y5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rmkje"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 60, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 90.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 12.0
+color = Color(0.52, 0.88800013, 1, 0.77254903)
+alpha_curve = SubResource("CurveTexture_soadc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_soadc"]
+font = ExtResource("4_ctt6e")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmkje"]
+bg_color = Color(0.69487154, 0, 0.17357698, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o1y5"]
+bg_color = Color(2.8878452e-07, 0.3242189, 0.7979776, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd48j"]
+bg_color = Color(0.5469947, 0.0014380505, 0.7231465, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyoup"]
+bg_color = Color(0.6334867, 0.6439166, 0.65081894, 1)
 
 [node name="BuildingHex" type="Node2D" unique_id=1334187993]
 script = ExtResource("1_iavsh")
@@ -99,6 +137,29 @@ grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_ve0g0")
 text = "Park"
 
+[node name="EffectLabel" type="Label" parent="Button" unique_id=2073531056]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.5
+offset_top = -32.0
+offset_right = 41.5
+offset_bottom = -6.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_ve0g0")
+text = "+5 Gold"
+
+[node name="ParticlesEmiter" type="GPUParticles2D" parent="Button" unique_id=1438832696]
+position = Vector2(70, 83)
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_rmkje")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=944713468]
 visible = false
 
@@ -115,50 +176,110 @@ offset_bottom = 231.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InfoTitle" type="Label" parent="CanvasLayer" unique_id=1251990207]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -147.0
-offset_right = 41.0
-offset_bottom = -124.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Testujemy"
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1789601012]
+offset_left = 485.0
+offset_top = 206.0
+offset_right = 885.0
+offset_bottom = 537.0
+theme_override_constants/separation = 15
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1668799818]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="InfoTitle" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1251990207]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Testujemy"
+label_settings = SubResource("LabelSettings_soadc")
+horizontal_alignment = 1
+
+[node name="BigArt" type="TextureRect" parent="CanvasLayer/VBoxContainer" unique_id=1668799818]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("3_ctt6e")
 
-[node name="Back" type="Button" parent="CanvasLayer" unique_id=646903691]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.0
-offset_top = 121.0
-offset_right = 23.0
-offset_bottom = 152.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer" unique_id=1558128627]
+layout_mode = 2
+alignment = 1
+
+[node name="RedActionBig" type="PanelContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer" unique_id=4009255]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmkje")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/RedActionBig" unique_id=107939692]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="RedActionLabelBig" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/RedActionBig/MarginContainer" unique_id=894356616]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Testujemy"
+
+[node name="BlueActionBig" type="PanelContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer" unique_id=833016706]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_6o1y5")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/BlueActionBig" unique_id=47895417]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="BlueActionLabelBig" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/BlueActionBig/MarginContainer" unique_id=510909702]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Testujemy"
+
+[node name="GreenActionBig" type="PanelContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer" unique_id=1222596972]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_jd48j")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/GreenActionBig" unique_id=756127363]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="GreenActionLabelBig" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/GreenActionBig/MarginContainer" unique_id=1226259642]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Testujemy"
+
+[node name="AnyActionBig" type="PanelContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer" unique_id=1452889079]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_iyoup")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/AnyActionBig" unique_id=2028250762]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="AnyActionLabelBig" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/AnyActionBig/MarginContainer" unique_id=1013550289]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+text = "Testujemy"
+
+[node name="Back" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=646903691]
+layout_mode = 2
+size_flags_horizontal = 4
 text = "Back"
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Back" to="." method="_on_back_pressed"]
