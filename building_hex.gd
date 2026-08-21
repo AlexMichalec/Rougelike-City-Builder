@@ -125,16 +125,9 @@ func get_action_texts(color:String):
 		result += ActionManager.get_text(action)
 	return result
 	
-func get_effect_texts(color:String):
-	var result = ""
-	for action:Dictionary in card_info.actions.get(color,[]):
-		if result != "":
-			result += "\n"
-		result += ActionManager.get_effect_text(action)
-	return result	
 	
 func get_attention(color:Color, color_name:String):
-	effect_label.text = get_effect_texts(color_name)
+	effect_label.text = ActionManager.get_effect_text(card_info.actions[color_name])
 	effect_label.visible = true
 	$Button.add_theme_stylebox_override("normal", $Button.get_theme_stylebox("hover"))
 	$Button.self_modulate = color
@@ -149,5 +142,6 @@ func lose_attention():
 	$Button.self_modulate = Color(0.0, 0.788, 0.922, 0.702)
 	z_index = 0
 	title_label.visible = false
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	effect_label.visible = false
+	

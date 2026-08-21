@@ -118,6 +118,7 @@ text = "+"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CardsList" unique_id=1708184510]
 layout_mode = 2
+theme_override_constants/separation = 36
 alignment = 1
 
 [node name="CANCEL" type="Button" parent="PanelContainer/MarginContainer/CardsList/HBoxContainer" unique_id=912826161]
@@ -132,8 +133,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "SAVE"
 
+[node name="LAUNCH" type="Button" parent="PanelContainer/MarginContainer/CardsList/HBoxContainer" unique_id=1140080064]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PLAY THE GAME"
+
 [node name="CardEditor" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=222016318]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 script = ExtResource("3_kbn5m")
 action_container_scene = ExtResource("4_6cgkp")
@@ -486,6 +494,7 @@ text = "Save"
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/MarginContainer/GRID/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/CANCEL" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/SAVE" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CardsList/HBoxContainer/LAUNCH" to="." method="_on_launch_pressed"]
 [connection signal="text_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/HBoxContainer/TitleInput" to="PanelContainer/MarginContainer/CardEditor" method="_on_title_input_text_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/GoldCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_gold_cost_value_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/CardEditor/DataContainer/Values/CostsContainer/EnergyCost" to="PanelContainer/MarginContainer/CardEditor" method="_on_energy_cost_value_changed"]

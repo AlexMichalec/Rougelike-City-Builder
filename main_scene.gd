@@ -140,6 +140,7 @@ func _on_play_blue_pressed() -> void:
 	play_color("Blue")
 
 func play_color(color_name:String):
+	ActionManager.reset_effect_sum()
 	for building_record in Global.buildings_list:
 		var building:BuildingHex = building_record[1]
 		if building.card_info.actions.has(color_name):
@@ -156,6 +157,9 @@ func play_color(color_name:String):
 			await get_tree().create_timer(0.2).timeout
 		else:
 			continue
+	InfoLabel.text = ActionManager.get_effect_sum_text()
+	await get_tree().create_timer(2).timeout
+	InfoLabel.text = ""
 
 			
 			

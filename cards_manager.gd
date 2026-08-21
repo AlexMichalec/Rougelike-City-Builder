@@ -133,3 +133,7 @@ func _on_cancel_pressed() -> void:
 	else:
 		print("NIE DZIAŁA :c")
 		gen_from_arts()
+
+
+func _on_launch_pressed() -> void:
+	get_tree().change_scene_to_file("res://MainScene.tscn")
